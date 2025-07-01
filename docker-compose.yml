@@ -16,8 +16,7 @@ services:
       - /app/node_modules
     environment:
       - NODE_ENV=development
-      - NEXTJS_BASE_PATH=${NEXTJS_BASE_PATH:-}
-      - NEXT_PUBLIC_BASE_PATH=${NEXTJS_BASE_PATH:-}
+      - NEXT_PUBLIC_BASE_PATH=${NEXT_PUBLIC_BASE_PATH:-}
       - NEXT_PUBLIC_API_BASE_URL=${NEXT_PUBLIC_API_BASE_URL:-}
       - NEXT_PUBLIC_API_KEY=${NEXT_PUBLIC_API_KEY:-}
     stdin_open: true
@@ -31,12 +30,11 @@ services:
       args:
         - NEXTJS_BASE_PATH=${NEXTJS_BASE_PATH:-}
     ports:
-      - "8095:3000"
+      - "5000:3000"
     environment:
       - NODE_ENV=production
       - NEXT_TELEMETRY_DISABLED=1
-      - NEXTJS_BASE_PATH=${NEXTJS_BASE_PATH:-}
-      - NEXT_PUBLIC_BASE_PATH=${NEXTJS_BASE_PATH:-}
+      - NEXT_PUBLIC_BASE_PATH=${NEXT_PUBLIC_BASE_PATH:-}
       - NEXT_PUBLIC_API_BASE_URL=${NEXT_PUBLIC_API_BASE_URL:-}
       - NEXT_PUBLIC_API_KEY=${NEXT_PUBLIC_API_KEY:-}
     restart: unless-stopped
