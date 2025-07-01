@@ -16,7 +16,7 @@ interface I18nProviderProps {
 }
 
 export function I18nProvider({ children }: I18nProviderProps) {
-  const [language, setLanguage] = useState<Language>("en")
+  const [language, setLanguage] = useState<Language>("vi")
 
   const t = (key: TranslationKey): string => {
     const translations = getTranslation(language)

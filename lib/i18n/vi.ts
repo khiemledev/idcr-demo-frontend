@@ -6,6 +6,8 @@ export const vi = {
   // Navigation
   uploadImage: "Tải Ảnh Lên",
   demoImages: "Ảnh Mẫu",
+  uploadImageTab: "Tải Ảnh Lên",
+  demoImagesTab: "Ảnh Mẫu",
 
   // Upload section
   uploadYourId: "Tải Lên Thẻ Căn Cước",

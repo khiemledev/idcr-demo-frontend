@@ -14,8 +14,10 @@ import { ExtractedInfo, DemoImage, DetectionBox, IDCRResponse, APIError } from "
 import { demoImages } from "@/lib/data/demoImages"
 import { idcrApi } from "@/lib/api"
 import { convertIDCRResponseToExtractedInfo, hasValidationErrors, getValidationErrorMessages } from "@/lib/utils"
+import { useI18n } from "@/lib/contexts/I18nContext"
 
 export function IDCardReader() {
+  const { t } = useI18n()
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
   const [uploadedFile, setUploadedFile] = useState<File | null>(null)
   const [isProcessing, setIsProcessing] = useState(false)
@@ -167,8 +169,8 @@ export function IDCardReader() {
                 // Show tabs when no image is selected
                 <Tabs defaultValue="upload" className="w-full">
                   <TabsList className="grid w-full grid-cols-2">
-                    <TabsTrigger value="upload">Upload Image</TabsTrigger>
-                    <TabsTrigger value="demo">Demo Images</TabsTrigger>
+                    <TabsTrigger value="upload">{t("uploadImageTab")}</TabsTrigger>
+                    <TabsTrigger value="demo">{t("demoImagesTab")}</TabsTrigger>
                   </TabsList>
 
                   <TabsContent value="upload" className="space-y-4">

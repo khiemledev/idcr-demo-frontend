@@ -6,6 +6,8 @@ export const en = {
   // Navigation
   uploadImage: "Upload Image",
   demoImages: "Demo Images",
+  uploadImageTab: "Upload Image",
+  demoImagesTab: "Demo Images",
 
   // Upload section
   uploadYourId: "Upload Your ID Card",
