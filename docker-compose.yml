@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  # Development service for ID Card Reader Demo Frontend
+  idcr-demo-dev:
+    build:
+      context: .
+      target: deps
+    command: npm run dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - NEXT_PUBLIC_BASE_PATH=${NEXT_PUBLIC_BASE_PATH:-}
+    stdin_open: true
+    tty: true
+
+  # Production service for ID Card Reader Demo Frontend
+  idcr-demo-prod:
+    build:
+      context: .
+      target: runner
+    ports:
+      - "8095:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_TELEMETRY_DISABLED=1
+      - NEXT_PUBLIC_BASE_PATH=${NEXT_PUBLIC_BASE_PATH:-}
+    restart: unless-stopped
