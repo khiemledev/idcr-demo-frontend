@@ -1,13 +1,13 @@
 version: '3.8'
 
 services:
-  # Development service for ID Card Reader Demo Frontend
-  idcr-demo-dev:
+  # Development service
+  dev:
     build:
       context: .
       target: deps
       args:
-        - NEXT_PUBLIC_BASE_PATH=${NEXT_PUBLIC_BASE_PATH:-}
+        - NEXTJS_BASE_PATH=${NEXTJS_BASE_PATH:-}
     command: npm run dev
     ports:
       - "3000:3000"
@@ -16,23 +16,27 @@ services:
       - /app/node_modules
     environment:
       - NODE_ENV=development
-      - NEXT_PUBLIC_BASE_PATH=${NEXT_PUBLIC_BASE_PATH:-}
+      - NEXTJS_BASE_PATH=${NEXTJS_BASE_PATH:-}
+      - NEXT_PUBLIC_BASE_PATH=${NEXTJS_BASE_PATH:-}
+      - NEXT_PUBLIC_API_BASE_URL=${NEXT_PUBLIC_API_BASE_URL:-}
+      - NEXT_PUBLIC_API_KEY=${NEXT_PUBLIC_API_KEY:-}
     stdin_open: true
     tty: true
 
-  # Production service for ID Card Reader Demo Frontend
-  idcr-demo-prod:
+  # Production service
+  prod:
     build:
       context: .
       target: runner
       args:
-        - NEXT_PUBLIC_BASE_PATH=${NEXT_PUBLIC_BASE_PATH:-}
+        - NEXTJS_BASE_PATH=${NEXTJS_BASE_PATH:-}
     ports:
-      - "5000:3000"
+      - "8095:3000"
     environment:
       - NODE_ENV=production
       - NEXT_TELEMETRY_DISABLED=1
-      - NEXT_PUBLIC_BASE_PATH=${NEXT_PUBLIC_BASE_PATH:-}
+      - NEXTJS_BASE_PATH=${NEXTJS_BASE_PATH:-}
+      - NEXT_PUBLIC_BASE_PATH=${NEXTJS_BASE_PATH:-}
       - NEXT_PUBLIC_API_BASE_URL=${NEXT_PUBLIC_API_BASE_URL:-}
       - NEXT_PUBLIC_API_KEY=${NEXT_PUBLIC_API_KEY:-}
     restart: unless-stopped
